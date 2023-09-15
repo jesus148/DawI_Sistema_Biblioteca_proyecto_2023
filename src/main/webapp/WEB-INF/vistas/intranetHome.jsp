@@ -1,6 +1,5 @@
-<%@page import="java.util.List"%>
-<%@page import="com.centroinformacion.entity.Rol"%>
-<%@page import="com.centroinformacion.entity.Usuario"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<jsp:include page="intranetValida.jsp" />
 <!DOCTYPE html>
 <html lang="esS" >
 <head>
@@ -30,19 +29,17 @@
 <jsp:include page="intranetCabecera.jsp" />
 
 <div class="container" style="margin-top: 5%">
-<h3>Intranet Sistema Delivery</h3>
+<h3>Intranet Sistema</h3>
 <br><br>
-
-<% Usuario objUsuario = (Usuario) session.getAttribute("objUsuario"); %>
-<% List<Rol> objRoles = (List<Rol>) session.getAttribute("objRoles"); %>
-
-<h4>Bienvenido Sr(a): <%= objUsuario.getNombreCompleto() %></h4><br>                
-<h4>DNI: <%= objUsuario.getDni() %></h4><br>
+<h4>Bienvenido Sr(a): ${sessionScope.objUsuario.nombreCompleto}</h4><br>                
+<h4>DNI: ${sessionScope.objUsuario.dni}</h4><br>
 <h4>Roles:</h4>
 	<ul>
-		<% for(Rol x: objRoles ){ %>
-            <li><%= x.getNombre() %> </li>
-         <% } %>   
+        <c:forEach var="x" items="${sessionScope.objRoles}">
+            <li>
+                   ${x.nombre} 
+            </li>
+        </c:forEach>
     </ul><br>
 </div>
 

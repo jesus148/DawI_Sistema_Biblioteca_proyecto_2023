@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+
 <!DOCTYPE html>
 <html lang="esS" >
 <head>
@@ -26,12 +28,12 @@
         <div class="top-content">
             <div class="inner-bg">
                 <div class="container">
-                <%  if (request.getAttribute("mensaje") != null) { %>
-                	<div class="alert alert-danger fade in" id="success-alert">
+                	<c:if test="${requestScope.mensaje != null}">
+               		<div class="alert alert-danger fade in" id="success-alert">
 				        <a href="#" class="close" data-dismiss="alert">&times;</a>
-				        <strong><%= request.getAttribute("mensaje")  %></strong>
+				        <strong>${requestScope.mensaje}</strong>
 				    </div>
-				<% } %>
+				    </c:if>
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                         	<div class="form-top">

@@ -1,5 +1,4 @@
-<%@page import="com.centroinformacion.entity.Opcion"%>
-<%@page import="java.util.List"%>
+<%@ taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <div class="container">
  <div class="navbar navbar-inverse navbar-fixed-top">
   <div class="container">
@@ -15,60 +14,67 @@
     <ul class="nav navbar-nav navbar-left">
        	<li><a href="verIntranetHome">Home</a></li>
     </ul>
-    <% List<Opcion> objMenus = (List<Opcion>) session.getAttribute("objMenus"); %>
     
     <ul class="nav navbar-nav">
-    	<li class="dropdown">
-	        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	          Registros (PC1)<b class="caret"></b>
-	        </a>
-	        <ul class="dropdown-menu">
-			<% for (Opcion x: objMenus) {  
-				if ( x.getTipo() == 1) { %>
-				   <li>
-		        		<a href="<%= x.getRuta() %>"><%= x.getNombre() %></a></li>
-	          <% }} %>	
-	        </ul>
-     	</li>
+    	<c:if test="${ !empty sessionScope.objMenusTipo1}">
+	    	<li class="dropdown">
+		        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		           Registros (PC1)<b class="caret"></b>
+		        </a>
+		        <ul class="dropdown-menu">
+		        	<c:forEach var="x" items="${sessionScope.objMenusTipo1}">
+						<li>
+		        			<a href="${x.ruta}"> ${x.nombre} </a>
+		        		</li>
+		        	</c:forEach>
+		        </ul>
+	     	</li>
+     	</c:if>
      	
-     	<li class="dropdown">
-	        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	          CRUD (PC2)<b class="caret"></b>
-	        </a>
-	        <ul class="dropdown-menu">
-			<% for (Opcion x: objMenus) {  
-				if ( x.getTipo() == 3) { %>
-				   <li>
-		        		<a href="<%= x.getRuta() %>"><%= x.getNombre() %></a></li>
-	          <% }} %>	
-	        </ul>
-     	</li>   	
+     	<c:if test="${ !empty sessionScope.objMenusTipo3}">
+	    	<li class="dropdown">
+		        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		           CRUD (PC2)<b class="caret"></b>
+		        </a>
+		        <ul class="dropdown-menu">
+		        	<c:forEach var="x" items="${sessionScope.objMenusTipo3}">
+						<li>
+		        			<a href="${x.ruta}"> ${x.nombre} </a>
+		        		</li>
+		        	</c:forEach>
+		        </ul>
+	     	</li>
+     	</c:if>
      	
-     	<li class="dropdown">
-	        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	          Consulta y Reporte (PC3)<b class="caret"></b>
-	        </a>
-	        <ul class="dropdown-menu">
-			<% for (Opcion x: objMenus) {  
-				if ( x.getTipo() == 2) { %>
-				   <li>
-		        		<a href="<%= x.getRuta() %>"><%= x.getNombre() %></a></li>
-	          <% }} %>	
-	        </ul>
-     	</li>
+      	<c:if test="${ !empty sessionScope.objMenusTipo2}">
+	    	<li class="dropdown">
+		        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		           Consulta y Reporte (PC3)<b class="caret"></b>
+		        </a>
+		        <ul class="dropdown-menu">
+		        	<c:forEach var="x" items="${sessionScope.objMenusTipo2}">
+						<li>
+		        			<a href="${x.ruta}"> ${x.nombre} </a>
+		        		</li>
+		        	</c:forEach>
+		        </ul>
+	     	</li>
+     	</c:if>    	
      	
-     	<li class="dropdown">
-	        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-	          Transacciones (AP)<b class="caret"></b>
-	        </a>
-	        <ul class="dropdown-menu">
-			<% for (Opcion x: objMenus) {  
-				if ( x.getTipo() == 4) { %>
-				   <li>
-		        		<a href="<%= x.getRuta() %>"><%= x.getNombre() %></a></li>
-	          <% }} %>	
-	        </ul>
-     	</li>   
+     	<c:if test="${ !empty sessionScope.objMenusTipo4}">
+	    	<li class="dropdown">
+		        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		          Transacciones (AP)<b class="caret"></b>
+		        </a>
+		        <ul class="dropdown-menu">
+		        	<c:forEach var="x" items="${sessionScope.objMenusTipo4}">
+						<li>
+		        			<a href="${x.ruta}"> ${x.nombre} </a>
+		        		</li>
+		        	</c:forEach>
+		        </ul>
+	     	</li>
+     	</c:if> 
      	
      </ul>
       
