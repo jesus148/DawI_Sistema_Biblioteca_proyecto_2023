@@ -4,7 +4,7 @@ import org.springframework.stereotype.Controller;
 
 /**
  * 
- * @author Juan Ramos
+ * @author Juan Ramos Ayasta
  *
  */
 @Controller
