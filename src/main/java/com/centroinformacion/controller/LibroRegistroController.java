@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.centroinformacion.entity.DataCatalogo;
-import com.centroinformacion.entity.Ejemplo;
 import com.centroinformacion.entity.Libro;
 import com.centroinformacion.entity.Usuario;
-import com.centroinformacion.service.EjemploService;
 import com.centroinformacion.service.LibroService;
 import com.centroinformacion.util.AppSettings;
 
