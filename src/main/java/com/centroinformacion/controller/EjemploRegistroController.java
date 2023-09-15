@@ -42,4 +42,12 @@ public class EjemploRegistroController {
 		}
 		return map;
 	}
+	
+	
+	
+	
+	
+	
+	
+	
 }
