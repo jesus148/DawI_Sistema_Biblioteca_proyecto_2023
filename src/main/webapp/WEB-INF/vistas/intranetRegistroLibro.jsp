@@ -47,16 +47,16 @@
 					<input class="form-control" type="text" id="id_serie" name="serie" placeholder="Ingrese el serie">
 				</div>
 				<div class="form-group col-md-3">
-					<label class="control-label" for="id_categoria">Categoría</label>
-					<select id="id_categoria" name="categoria.idCategoria" class='form-control'>
+					<label class="control-label" for="id_categoriaLibro">Categoría</label>
+					<select id="id_categoriaLibro" name="categoriaLibro.idDataCatalogo" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
 			    </div>
 			</div>
 			<div class="row">
 			    <div class="form-group col-md-3">
-					<label class="control-label" for="id_tipo">Tipo</label>
-					<select id="id_tipo" name="tipo.idTipo" class='form-control'>
+					<label class="control-label" for="id_tipoLibro">Tipo</label>
+					<select id="id_tipoLibro" name="tipoLibro.idDataCatalogo" class='form-control'>
 						<option value=" ">[Seleccione]</option>    
 					</select>
 			    </div>
@@ -74,12 +74,12 @@
 <!-- Agregar aquí -->
 $.getJSON("listaCategoriaDeLibro", {}, function(data){
 	$.each(data, function(index,item){
-		$("#id_categoria").append("<option value="+item.idDataCatalogo +">"+ item.descripcion +"</option>");
+		$("#id_categoriaLibro").append("<option value="+item.idDataCatalogo +">"+ item.descripcion +"</option>");
 	});
 });
 $.getJSON("listaTipoLibroRevista", {}, function(data){
 	$.each(data, function(index,item){
-		$("#id_tipo").append("<option value="+item.idDataCatalogo +">"+ item.descripcion +"</option>");
+		$("#id_tipoLibro").append("<option value="+item.idDataCatalogo +">"+ item.descripcion +"</option>");
 	});
 });
 
@@ -94,6 +94,7 @@ $("#id_registrar").click(function (){
             url: "registraLibro", 
             data: $('#id_form').serialize(),
             success: function(data){
+            	console.log(data);
             	mostrarMensaje(data.MENSAJE);
             	validator.resetForm();
             	limpiarFormulario();
@@ -108,7 +109,7 @@ function limpiarFormulario(){
 	$("#id_titulo").val('');
 	$("#id_anio").val('');
 	$("#id_serie").val('');
-	$("#id_categoria").val(' ');
+	$("#id_categoriaLibro").val(' ');
 	$("#id_tipo").val(' ');
 }
 $('#id_form').bootstrapValidator({
@@ -153,8 +154,8 @@ $('#id_form').bootstrapValidator({
                 },
             }
         },
-        categoria: {
-    		selector : '#id_categoria',
+        categoriaLibro: {
+    		selector : '#id_categoriaLibro',
             validators: {
             	notEmpty: {
                     message: 'Categoria es un campo obligatorio'
