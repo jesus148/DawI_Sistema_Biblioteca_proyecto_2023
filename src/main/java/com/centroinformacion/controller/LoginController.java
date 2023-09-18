@@ -29,11 +29,18 @@ public class LoginController {
 			request.setAttribute("mensaje", "El usuario no existe");
 			return "intranetLogin";
 		} else {
-			List<Opcion> menus = servicio.traerEnlacesDeUsuario(usuario.getIdUsuario());
 			List<Rol> roles = servicio.traerRolesDeUsuario(usuario.getIdUsuario());
-
+			List<Opcion> menus = servicio.traerEnlacesDeUsuario(usuario.getIdUsuario());
+			List<Opcion> menusTipo1 = menus.stream().filter(p -> p.getTipo() == 1).toList();
+			List<Opcion> menusTipo2 = menus.stream().filter(p -> p.getTipo() == 2).toList();
+			List<Opcion> menusTipo3 = menus.stream().filter(p -> p.getTipo() == 3).toList();
+			List<Opcion> menusTipo4 = menus.stream().filter(p -> p.getTipo() == 4).toList();
+			
 			session.setAttribute("objUsuario", usuario);
-			session.setAttribute("objMenus", menus);
+			session.setAttribute("objMenusTipo1", menusTipo1);
+			session.setAttribute("objMenusTipo2", menusTipo2);
+			session.setAttribute("objMenusTipo3", menusTipo3);
+			session.setAttribute("objMenusTipo4", menusTipo4);
 			session.setAttribute("objRoles", roles);
 
 			return "intranetHome";
