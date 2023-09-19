@@ -5,11 +5,20 @@ import java.util.List;
 
 public interface AutorService {
 
+
 	
 	
+	//METODOS 
+	
+	
+	
+	//metodo para registrar 
 	public abstract Autor insertaAutor(Autor obj);
 	
-	public abstract List<Autor> buscarPorNombre(String nombre);
+	
+	//metodo para buscar el nombre si ya se encuentra
+//	ojo : tambien buscarPorNombre(String nombres) en el parametro se debe poner el atributo tal como esta en la clase guia
+	public abstract List<Autor> buscarPorNombre(String nombres);
 	
 	
 	

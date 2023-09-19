@@ -28,6 +28,8 @@ public interface AutorRepository  extends JpaRepository<Autor, Integer>{
 	//ademas recordar q este metodo retorna los datos encontrados en 1 lista
 	
 	
-	public abstract List<Autor> findByNombresIgnoreCase(String nombre);	
+//	ojo : tambien (String nombres) en el parametro se debe poner el atributo tal como esta en la clase guia
+	
+	public abstract List<Autor> findByNombresIgnoreCase(String nombres);	
 
 }

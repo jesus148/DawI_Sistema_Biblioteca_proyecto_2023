@@ -25,6 +25,8 @@
 <body>    
 
 
+<!-- esto esto el inicio de la aplicacion  -->
+
         <div class="top-content">
             <div class="inner-bg">
                 <div class="container">
@@ -43,6 +45,7 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
+<!--                             este inicia llama al metodo logui controller -->
 			                    <form id="id_form"  action="login" method="post" class="login-form">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">Usuario</label>

@@ -22,6 +22,7 @@ public class LoginController {
 	@Autowired
 	private UsuarioService servicio;
 
+	/* entra */
 	@PostMapping("/login")
 	public String login(Usuario user, HttpSession session, HttpServletRequest request) {
 		Usuario usuario = servicio.login(user);
@@ -36,7 +37,8 @@ public class LoginController {
 			List<Opcion> menusTipo3 = menus.stream().filter(p -> p.getTipo() == 3).toList();
 			List<Opcion> menusTipo4 = menus.stream().filter(p -> p.getTipo() == 4).toList();
 			
-			session.setAttribute("objUsuario", usuario);
+			/* barra de navegacion */
+			session.setAttribute("objUsuario", usuario); //donde se alamcena todo del usuario logueado
 			session.setAttribute("objMenusTipo1", menusTipo1);
 			session.setAttribute("objMenusTipo2", menusTipo2);
 			session.setAttribute("objMenusTipo3", menusTipo3);
@@ -46,6 +48,8 @@ public class LoginController {
 			return "intranetHome";
 		}
 	}
+	
+/*	sale*/
 
 	@GetMapping("/logout")
 	public String logout(HttpSession session, HttpServletRequest request, HttpServletResponse response) {
