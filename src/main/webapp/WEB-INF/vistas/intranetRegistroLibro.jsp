@@ -110,7 +110,7 @@ function limpiarFormulario(){
 	$("#id_anio").val('');
 	$("#id_serie").val('');
 	$("#id_categoriaLibro").val(' ');
-	$("#id_tipo").val(' ');
+	$("#id_tipoLibro").val(' ');
 }
 $('#id_form').bootstrapValidator({
     message: 'This value is not valid',
@@ -127,10 +127,10 @@ $('#id_form').bootstrapValidator({
                     message: 'El título es un campo obligatorio'
                 },
                 stringLength :{
-                	message:'El título es de 5 a 100 caracteres',
-                	min : 5,
-                	max : 100
-                },
+                	message:'El título es de 2 a 40 caracteres',
+                	min : 2,
+                	max : 40
+                }
             }
         },
         anio: {
@@ -138,6 +138,10 @@ $('#id_form').bootstrapValidator({
             validators: {
                 notEmpty: {
                     message: 'El año es obligatorio'
+                },
+                regexp: {
+                    regexp: /^[0-9]{4}$/,
+                    message: 'El año debe tener 4 dígitos numéricos'
                 }
             }
         },
@@ -147,11 +151,10 @@ $('#id_form').bootstrapValidator({
                 notEmpty: {
                     message: 'El serie es un campo obligatorio'
                 },
-                stringLength :{
-                	message:'El serie es de 5 a 100 caracteres',
-                	min : 5,
-                	max : 100
-                },
+                regexp: {
+                    regexp: /^[a-zA-Z]{2}[0-9]{3}$/,
+                    message: 'El año debe tener 2 letras seguidas de 3 números'
+                }
             }
         },
         categoriaLibro: {
@@ -159,17 +162,17 @@ $('#id_form').bootstrapValidator({
             validators: {
             	notEmpty: {
                     message: 'Categoria es un campo obligatorio'
-                },
+                }
             }
         },
-        tipo: {
-    		selector : '#id_tipo',
+        tipoLibro: {
+    		selector : '#id_tipoLibro',
             validators: {
             	notEmpty: {
                     message: 'Tipo es un campo obligatorio'
-                },
+                }
             }
-        },
+        }
     }   
 });
 </script>   		
