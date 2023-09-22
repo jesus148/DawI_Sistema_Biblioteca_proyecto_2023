@@ -38,6 +38,7 @@ public class RegistraAutorController {
 	
 	//recordar no subir el password
 	
+	//nueva rama f
 	
 	
 	
