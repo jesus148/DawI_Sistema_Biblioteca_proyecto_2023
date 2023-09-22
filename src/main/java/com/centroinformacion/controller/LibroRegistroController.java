@@ -1,13 +1,14 @@
 package com.centroinformacion.controller;
+/**
+ * @author Esteffany Huamanraime Maquin
+ * 14092023
+ */
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
-/**
- * @author Esteffany Huamanraime Maquin
- * 14092023
- */
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
