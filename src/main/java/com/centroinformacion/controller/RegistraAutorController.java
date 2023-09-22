@@ -38,12 +38,12 @@ public class RegistraAutorController {
 	
 	//recordar no subir el password
 	
-	//nueva rama f
+	//nueva rama f fff
 	
 	
 	
 
-	//para registrar , AutorService se almacena en autorService
+	//para registrar , AutorService se almacena en autorService , 222
 	@Autowired
 	private AutorService autorService;
 	
