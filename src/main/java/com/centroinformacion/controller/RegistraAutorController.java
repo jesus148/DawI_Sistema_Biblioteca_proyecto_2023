@@ -43,7 +43,7 @@ public class RegistraAutorController {
 	
 	
 
-	//para registrar , AutorService se almacena en autorService
+	//para registrar , AutorService se almacena en autorService , 222
 	@Autowired
 	private AutorService autorService;
 	
