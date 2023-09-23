@@ -21,6 +21,8 @@
 <link rel="stylesheet" href="css/dataTables.bootstrap.min.css"/>
 <link rel="stylesheet" href="css/bootstrapValidator.css"/>
 
+
+
 <title>Intranet</title>
 </head>
 <body>
@@ -28,12 +30,12 @@
 <div class="container" style="margin-top: 4%"><h4>Reserva Sala</h4></div>
 
 <div class="container" style="margin-top: 1%">
-<!-- Agregar aquí -->
+<!-- Agregar aquï¿½ -->
 	
 </div>
 
 <script type="text/javascript">
-<!-- Agregar aquí -->
+<!-- Agregar aquï¿½ -->
 
 
 </script>   		
