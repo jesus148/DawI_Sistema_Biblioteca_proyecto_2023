@@ -49,7 +49,7 @@ public class RegistraAlumnoController {
 	
 	@GetMapping("/buscaPorAlumno")
 	@ResponseBody
-	public String validaNombre(@RequestParam String nombres){
+	public String validaNombre(String nombres){
 		List<Alumno> lstAlumno = alumnoService.buscaPorNombre(nombres);
 		
 		if(CollectionUtils.isEmpty(lstAlumno)) {

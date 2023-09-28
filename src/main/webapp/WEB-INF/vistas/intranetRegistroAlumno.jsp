@@ -100,8 +100,6 @@ $.getJSON("listaModalidadAlumno", {}, function(data){
 });
 
 
-$("#id_registrar")
-
 $("#id_registrar").click(function (){ 
 
 	var validator = $('#id_form').data('bootstrapValidator');
@@ -135,6 +133,8 @@ function limpiar(){
 	$('#id_modalidad').val(' ');
 }
 
+
+
 $(document).ready(function() {
     $('#id_form').bootstrapValidator({
         message: 'This value is not valid',
@@ -144,7 +144,7 @@ $(document).ready(function() {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-        		nombre:{
+        		nombres:{
                     selector: "#id_nombre",
                     validators:{
                         notEmpty: {
@@ -156,7 +156,7 @@ $(document).ready(function() {
                             message: 'El nombre debe tener entre 2 y 40 caracteres'
                         },
                         remote: {
-                            delay: 1000,
+                            delay: 600,
                             url: 'buscaPorAlumno',
                             message: 'El alumno ya existe'
                         }
