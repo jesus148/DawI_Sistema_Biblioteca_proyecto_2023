@@ -30,7 +30,6 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Alumno {
-  
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
