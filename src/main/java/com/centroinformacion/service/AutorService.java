@@ -22,4 +22,9 @@ public interface AutorService {
 	
 	
 	
+	
+	
+	//metodo para buscar
+	public abstract List<Autor>  buscaPorNombreSegundo(String nombre);
+	
 }

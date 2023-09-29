@@ -119,6 +119,55 @@ public class RegistraAutorController {
 	
 	
 	
+	
+	
+	
+	
+	
+	
+	
+	
+
+    //METODO PARA BUSCAR PERO DE MANERA PERSONALIZADA A LAS CLASES OSEA SQL PERO PARA LAS CLASES EN JAVA NO PARA SQL
+	//PARA BUSCAR Y VERIFICAR QUE NO SE REPITAN LOS NOMBRE DE los autores 
+//	ojo : tambien alidaNombre(String nombres) en el parametro se debe poner el atributo tal como esta en la clase guia
+	@GetMapping("/buscaTituloAutor")
+	@ResponseBody
+	public String validaNombreAutor(String nombres) {
+		//pregunta si lo encuentra
+		List<Autor> lstAutor = autorService.buscaPorNombreSegundo(nombres);
+		
+		//si esta vacio y no lo encuentra ese nombre then sale true ,esta listo pa registrar
+		if (CollectionUtils.isEmpty(lstAutor)) {
+			return "{\"valid\" : true }";  //retorna true listo para registrar
+		} else {
+			return "{\"valid\" : false }"; //retorna false ya se encuentra
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 	
 }

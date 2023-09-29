@@ -3,6 +3,7 @@ package com.centroinformacion.repository;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.centroinformacion.entity.Autor;
 
@@ -31,5 +32,22 @@ public interface AutorRepository  extends JpaRepository<Autor, Integer>{
 //	ojo : tambien (String nombres) en el parametro se debe poner el atributo tal como esta en la clase guia
 	
 	public abstract List<Autor> findByNombresIgnoreCase(String nombres);	
+	
+	
+	
+	
+	
+	
+	
+	
+	//esto es lo mismo de arriba pero personalizdados
+	
+	//estas consulta son para las clases en java es como mysql pero para las clases
+	//poner igual a ala clases guias
+	@Query("select x from Autor x where x.nombres=?1")
+	public List<Autor>  buscaPorNombre(String nombre);
+	
+	
+	
 
 }

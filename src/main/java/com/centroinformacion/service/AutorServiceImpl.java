@@ -40,6 +40,17 @@ public class AutorServiceImpl implements AutorService {
 		
 		return repository.findByNombresIgnoreCase(nombres);
 	}
+
+
+
+	
+	//metodo para buscar manera personalizda
+
+	@Override
+	public List<Autor> buscaPorNombreSegundo(String nombre) {
+	
+		return repository.buscaPorNombre(nombre);
+	}
 	
 	
 	

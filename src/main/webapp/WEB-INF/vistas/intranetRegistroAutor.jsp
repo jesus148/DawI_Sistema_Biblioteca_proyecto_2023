@@ -5,10 +5,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta http-equiv="Expires" content="-1" />
+<meta http-equiv="Expires" content="-1" />	
 <meta http-equiv="Cache-Control" content="private" />
 <meta http-equiv="Cache-Control" content="no-store" />
 <meta http-equiv="Pragma" content="no-cache" />
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+ <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery.dataTables.min.js"></script>
@@ -22,6 +24,25 @@
 <link rel="stylesheet" href="css/bootstrapValidator.css"/>
 
 <title>Intranet</title>
+ <style>
+        .input-icons i {
+            position: absolute;
+            margin-top: 6px;
+             color: #9BD2ED; 
+            font-size: 22px;
+            margin-left: -20px;
+        }
+         
+        .input-icons {
+          
+            margin-bottom: 10px;
+        }
+         
+
+         
+
+    </style>
+
 </head>
 <body>
 <jsp:include page="intranetCabecera.jsp" />
@@ -37,11 +58,12 @@
 
 
 		<div class="row" style="margin-top: 5%">
-			<div class="form-group col-sm-6">
+			<div class="form-group col-sm-6 input-icons">
 				<div class="col-sm-4">
 					<label class="control-label" for="id_nombres">Nombres</label>
 				</div>
 				<div class="col-sm-8">
+				 <i class="fa fa-user icon "></i>
 					<input class="form-control" type="text" id="id_nombres" name="nombres" placeholder="Ingrese el nombres" maxlength="40">
 				</div>
 			</div>
@@ -270,7 +292,12 @@ $(document).ready(function() {
                         //OJO : cuando escribas en el input escribe la palabra o el valor completo = ala bd ahi verifica si existe
                         remote:{
                     	    delay: 1000,
-                    	 	url: 'buscaPorAutor', //el url en controller debe ser =
+                    	    //1 forma buscan consulta con sql de spring
+                    	 	//url: 'buscaPorAutor', //el url en controller debe ser =
+                    	 		
+                    	 		
+                    	 	//2 forma buscar usando sql personalizado osea el sql para las clases en java	
+                    	 	url: 'buscaTituloAutor', //el url en controller debe ser =
                     	 	message: 'El autor ya existe ya existe'
                      	}
                     }
