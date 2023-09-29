@@ -10,6 +10,8 @@ public interface AlumnoRepository extends JpaRepository<Alumno, Integer>{
 	
 	public abstract List<Alumno> findByOrderByApellidosAsc();
 	
-	public abstract List<Alumno> findByNombresIgnoreCase(String nombres);
+	//agregado en clase
+	public abstract List<Alumno> findByTelefonoIgnoreCase(String telefono);
+	public abstract List<Alumno> findByDniIgnoreCase(String dni);
 
 }

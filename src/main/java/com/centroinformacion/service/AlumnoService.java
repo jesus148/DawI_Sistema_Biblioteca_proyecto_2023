@@ -9,6 +9,9 @@ public interface AlumnoService {
 	public abstract List<Alumno> listaTodos();
 	
 	public abstract Alumno insertaAlumno(Alumno obj);
-	public abstract List<Alumno> buscaPorNombre(String nombres);
+	
+	//agregado en clase
+	public abstract List<Alumno> buscaPorTelefono(String telefono);
+	public abstract List<Alumno> buscaPorDni(String dni);
 
 }
