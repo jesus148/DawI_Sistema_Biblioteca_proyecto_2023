@@ -155,11 +155,6 @@ $(document).ready(function() {
                             max: 40,
                             message: 'El nombre debe tener entre 2 y 40 caracteres'
                         },
-                        remote: {
-                            delay: 600,
-                            url: 'buscaPorAlumno',
-                            message: 'El alumno ya existe'
-                        }
                     }
                 },
                 apellido:{
@@ -182,8 +177,12 @@ $(document).ready(function() {
                              message: 'El teléfono es obligatorio'
                         },
                         regexp: {
-                        	regexp: /^[0-9]{1,9}$/,
+                        	regexp: /^[0-9]{9}$/,
                             message: 'El número de teléfono debe tener hasta 9 dígitos'
+                        },
+                        remote: {
+                            url: 'buscaPorTelefonoAlumno',
+                            message: 'El telefono ya existe'
                         }
                     }
                 },
@@ -194,8 +193,12 @@ $(document).ready(function() {
                              message: 'El DNI es obligatorio'
                         },
                         regexp: {
-                        	regexp: /^[0-9]{1,8}$/,
+                        	regexp: /^[0-9]{8}$/,
                             message: 'El número de DNI debe tener hasta 8 dígitos'
+                        },
+                        remote: {
+                            url: 'buscaPorDniAlumno',
+                            message: 'El dni ya existe'
                         }
                     }
                 },
@@ -208,8 +211,7 @@ $(document).ready(function() {
                         regexp: {
                             regexp: /^[a-zA-Z0-9._%+-]+@cibertec\.edu\.pe$/,
                             message: 'El correo debe tener el formato @cibertec.edu.pe'
-                        }
-                        
+                        },
                     }
                 },
                 fecnacimiento:{

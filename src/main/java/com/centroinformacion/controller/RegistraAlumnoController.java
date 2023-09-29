@@ -46,10 +46,12 @@ public class RegistraAlumnoController {
 		return map;
 	}
 	
-	@GetMapping("/buscaPorAlumno")
+	
+	//agregado en clase
+	@GetMapping("/buscaPorTelefonoAlumno")
 	@ResponseBody
-	public String validaNombre(String nombres){
-		List<Alumno> lstAlumno = alumnoService.buscaPorNombre(nombres);
+	public String validaTelefono(String telefono){
+		List<Alumno> lstAlumno = alumnoService.buscaPorTelefono(telefono);
 		
 		if(CollectionUtils.isEmpty(lstAlumno)) {
 			return "{\"valid\" : true }";
@@ -57,5 +59,20 @@ public class RegistraAlumnoController {
 			return "{\"valid\" : false }";
 		}
 	}
+	
+	//error con dni
+	@GetMapping("/buscaPorDniAlumno")
+	@ResponseBody
+	public String validaDni(String dni){
+		List<Alumno> lstAlumno = alumnoService.buscaPorDni(dni);
+		
+		if(CollectionUtils.isEmpty(lstAlumno)) {
+			return "{\"valid\" : true }";
+		} else {
+			return "{\"valid\" : false }";
+		}
+	}
+	
+	
 	
 }

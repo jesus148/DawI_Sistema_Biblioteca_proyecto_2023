@@ -18,17 +18,21 @@ public class AlumnoServiceImp implements AlumnoService {
 	public List<Alumno> listaTodos() {
 		return repository.findByOrderByApellidosAsc();
 	}
-	
+
 	@Override
 	public Alumno insertaAlumno(Alumno obj) {
 		return repository.save(obj);
 	}
-	
+
+	// agregado en clase
 	@Override
-	public List<Alumno> buscaPorNombre(String nombres) {
-		return repository.findByNombresIgnoreCase(nombres);
+	public List<Alumno> buscaPorTelefono(String telefono) {
+		return repository.findByTelefonoIgnoreCase(telefono);
+	}
+	@Override
+	public List<Alumno> buscaPorDni(String dni) {
+		return repository.findByDniIgnoreCase(dni);
+
 	}
 
-	
-	
 }
