@@ -1,5 +1,7 @@
 package com.centroinformacion.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,4 +18,9 @@ public class LibroServiceImp implements LibroService{
 		// TODO Auto-generated method stub
 		return repository.save(obj);
 	}
+	@Override
+	public List<Libro> buscaPorTitulo(String libro) {
+		
+		return repository.findByTituloIgnoreCase(libro);
+		}
 }

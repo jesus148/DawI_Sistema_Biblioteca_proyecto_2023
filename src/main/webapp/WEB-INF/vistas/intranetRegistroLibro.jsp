@@ -130,6 +130,12 @@ $('#id_form').bootstrapValidator({
                 	message:'El título es de 2 a 40 caracteres',
                 	min : 2,
                 	max : 40
+                },
+                
+                remote:{
+                	delay: 1000,
+                	url:'buscaLibroPorTitulo',
+                	message : 'El titulo ya existe'
                 }
             }
         },

@@ -5,11 +5,14 @@ package com.centroinformacion.controller;
  */
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.collections.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -48,5 +51,15 @@ public class LibroRegistroController {
 			map.put("MENSAJE", "Registro exitoso");
 		}
 		return map;
+	}
+	@GetMapping("/buscaLibroPorTitulo")
+	@ResponseBody
+	public String validaTitulo(String titulo){
+		List<Libro> lstLibro = libroService.buscaPorTitulo(titulo);
+		if(CollectionUtils.isEmpty(lstLibro)) {
+			return "{\"valid\" : true }";
+		} else {
+			return "{\"valid\" : false }";
+		}
 	}
 }
