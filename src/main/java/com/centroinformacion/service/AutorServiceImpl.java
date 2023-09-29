@@ -3,6 +3,7 @@ package com.centroinformacion.service;
 
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -51,6 +52,59 @@ public class AutorServiceImpl implements AutorService {
 	
 		return repository.buscaPorNombre(nombre);
 	}
+
+
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//METODOS PARA EL CRUD
+
+	@Override
+	public Autor actualizaAutor(Autor obj) {
+		return repository.save(obj);
+	}
+
+
+
+
+	@Override
+	public List<Autor> listaPorNombreLike(String nombre) {
+		return repository.listaPorNombreLike(nombre);
+	}
+
+
+
+
+	@Override
+	public Optional<Autor> buscaAutor(int idAutor) {
+		return repository.findById(idAutor);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

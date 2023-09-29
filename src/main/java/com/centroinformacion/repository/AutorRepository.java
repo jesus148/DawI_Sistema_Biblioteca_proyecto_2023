@@ -49,5 +49,33 @@ public interface AutorRepository  extends JpaRepository<Autor, Integer>{
 	
 	
 	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	//CRUD 
+
+	
+	//lista , 1 se refiere al primer parametro (osea los q ingresan)
+	@Query("select x from Autor x where x.nombres like ?1")    
+	public List<Autor> listaPorNombreLike(String filtro);
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
