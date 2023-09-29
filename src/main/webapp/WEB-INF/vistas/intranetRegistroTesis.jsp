@@ -132,10 +132,15 @@ $('#id_form').bootstrapValidator({
                 notEmpty: {
                     message: 'El título es un campo obligatorio'
                 },
-                stringLength :{
-                	message:'El título es de 2 a 100 caracteres',
+                stringLength :{              	
                 	min : 2,
-                	max : 100
+                	max : 100,
+                	message:'El título es de 2 a 100 caracteres'
+                },
+                remote:{
+                	delay: 1000,
+                	url:'buscaTesisPorTitulo',
+                	message : 'El titulo ya existe'
                 },
             }
         },
