@@ -32,6 +32,7 @@ public class TesisRegistroController {
 		public Map<?, ?> registra(Tesis obj, HttpSession session){
 			Usuario objUsuario = (Usuario)session.getAttribute("objUsuario");
 			obj.setFechaRegistro(new Date());
+			obj.setFechaActualizacion(new Date());
 			obj.setEstado(AppSettings.ACTIVO);
 			obj.setUsuarioRegistro(objUsuario);
 			obj.setUsuarioActualiza(objUsuario);

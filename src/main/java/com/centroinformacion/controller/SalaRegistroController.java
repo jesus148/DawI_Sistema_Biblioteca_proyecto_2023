@@ -31,6 +31,7 @@ public class SalaRegistroController {
 	public Map<?, ?> registra(Sala obj, HttpSession session){
 		Usuario objUsuario = (Usuario)session.getAttribute("objUsuario");
 		obj.setFechaActualizacion(new Date());
+		obj.setFechaActualizacion(new Date());
 		obj.setFechaRegistro(new Date());
 		obj.setEstado(AppSettings.ACTIVO);
 		obj.setUsuarioRegistro(objUsuario);
