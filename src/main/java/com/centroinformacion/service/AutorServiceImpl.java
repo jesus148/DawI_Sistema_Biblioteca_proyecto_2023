@@ -18,6 +18,7 @@ public class AutorServiceImpl implements AutorService {
 	
 	
 	 //CONEXION AL REPOSITORIO
+	//nuevo
 	@Autowired
 	private AutorRepository repository;
 	//METODOS DE LA INTERFACE
