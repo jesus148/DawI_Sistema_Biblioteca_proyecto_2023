@@ -28,12 +28,36 @@
 <div class="container" style="margin-top: 4%"><h4>CRUD Autor</h4></div>
 
 <div class="container" style="margin-top: 1%">
-<!-- Agregar aquí -->
+
+
+
+
+
+
+
+
+
+
+
+
 	
 </div>
 
 <script type="text/javascript">
-<!-- Agregar aquí -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </script>   		
