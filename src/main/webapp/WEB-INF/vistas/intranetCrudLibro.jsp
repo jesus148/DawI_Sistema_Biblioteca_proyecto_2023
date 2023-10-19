@@ -108,7 +108,7 @@
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_reg_categoriaLibro">Categoría</label>
 		                                        <div class="col-lg-3">
-													<select id="id_reg_categoriaLibro" name="categoriaLibro.idDataCatalogo" class='form-control'>
+													<select id="id_reg_categoriaLibro" name="categoriaLibro" class='form-control'>
 														<option value=" ">[Seleccione]</option>    
 													</select>
 												</div>
@@ -116,8 +116,16 @@
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_reg_tipoLibro">Tipo</label>
 		                                        <div class="col-lg-3">
-													 <select id="id_reg_tipoLibro" name="tipoLibro.idDataCatalogo" class='form-control'>
+													 <select id="id_reg_tipoLibro" name="tipoLibro" class='form-control'>
 							                            	<option value=" ">[Seleccione]</option>    
+							                         </select>
+		                                        </div>
+		                                    </div>
+		                                    <div class="form-group">
+		                                        <label class="col-lg-3 control-label" for="id_reg_estadoPrestamo" style="display: none;" >Estado préstado</label>
+		                                        <div class="col-lg-3">
+													 <select id="id_reg_estadoPrestamo" name="estadoPrestamo" class='form-control' style="display: none;">
+							                            	<option value="27" selected>Disponible</option>    
 							                         </select>
 		                                        </div>
 		                                    </div>
@@ -198,7 +206,7 @@
 		                                        </div>
 		                                    </div>
 		                                    <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_act_estadoPrestamo">Estado Prétamo</label>
+		                                        <label class="col-lg-3 control-label" for="id_act_estadoPrestamo">Estado Préstamo</label>
 		                                        <div class="col-lg-3">
 													<select id="id_act_estadoPrestamo" name="estadoPrestamo.idDataCatalogo" class='form-control'>
 							                            	<option value=" ">[Seleccione]</option>    
@@ -242,6 +250,7 @@ $.getJSON("listaTipoLibroRevista", {}, function(data){
 
 $.getJSON("listaEstadoLibro", {}, function(data){
 	$.each(data, function(i,item){
+		$("#id_reg_estadoPrestamo").append("<option value="+item.idDataCatalogo +">"+ item.descripcion +"</option>");
 		$("#id_act_estadoPrestamo").append("<option value="+item.idDataCatalogo +">"+ item.descripcion +"</option>");
 		//$("#id_act_deporte").append("<option value="+item.idDeporte +">"+ item.nombre +"</option>");
 	});
@@ -261,7 +270,7 @@ function agregarGrilla(lista){
 			searching: false,
 			ordering: true,
 			processing: true,
-			pageLength: 5,
+			pageLength: 10,
 			lengthChange: false,
 			columns:[
 				{data: "idLibro"},
@@ -296,6 +305,22 @@ function accionEliminar(id){
           }
      });
 }
+$(document).ready(function() {
+    // Limpia el validador cuando se oculta el modal de registro
+    $('#id_div_modal_registra').on('hidden.bs.modal', function() {
+        $('#id_form_registra').bootstrapValidator('resetForm');
+    });
+
+    // Limpia el validador cuando se oculta el modal de actualización
+    $('#id_div_modal_actualiza').on('hidden.bs.modal', function() {
+        $('#id_form_actualiza').bootstrapValidator('resetForm');
+    });
+
+    // Limpia el validador si se oculta el modal sin importar cómo
+    $('#id_div_modal_registra, #id_div_modal_actualiza').on('hide.bs.modal', function() {
+        $('#id_form_registra, #id_form_actualiza').bootstrapValidator('resetForm');
+    });
+});
 
 $("#id_btn_registra").click(function (){ 
 	var validator = $('#id_form_registra').data('bootstrapValidator');
@@ -304,13 +329,14 @@ $("#id_btn_registra").click(function (){
 	if (validator.isValid()){
 		$.ajax({
     		type: "POST",
-            url: "registraLibro", 
+            url: "registraCrudLibro", 
             data: $('#id_form_registra').serialize(),
             success: function(data){
-            	console.log(data);
-            	mostrarMensaje(data.MENSAJE);
-            	validator.resetForm();
-            	limpiarFormulario();
+              agregarGrilla(data.lista);
+          	  $('#id_div_modal_registra').modal("hide");
+          	  mostrarMensaje(data.mensaje);
+          	  limpiarFormulario();
+          	  validator.resetForm();
             },
             error: function(){
             	mostrarMensaje(MSG_ERROR);
@@ -331,6 +357,7 @@ $("#id_btn_actualiza").click(function(){
         	  agregarGrilla(data.lista);
         	  $('#id_div_modal_actualiza').modal("hide");
         	  mostrarMensaje(data.mensaje);
+        	  validator.resetForm();
           },
           error: function(){
         	  mostrarMensaje(MSG_ERROR);
@@ -422,11 +449,23 @@ $('#id_form_registra').bootstrapValidator({
                     message: 'Tipo es un campo obligatorio'
                 }
             }
+        },
+        estadoPrestamo: {
+    		selector : '#id_reg_estadoPrestamo',
+            validators: {
+            	notEmpty: {
+                    message: 'El estado del préstamo es un campo obligatorio'
+                }
+            }
         }
     }   
 });
-
+/*
+$('#id_div_modal_actualiza').on('shown.bs.modal', function() {
+    $('#id_form_actualiza').bootstrapValidator('validate');
+}); */
 $('#id_form_actualiza').bootstrapValidator({
+    live: 'enabled',
     message: 'This value is not valid',
     feedbackIcons: {
         valid: 'glyphicon glyphicon-ok',
@@ -444,13 +483,31 @@ $('#id_form_actualiza').bootstrapValidator({
                 	message:'El título es de 2 a 40 caracteres',
                 	min : 2,
                 	max : 40
-                }/*,
-                
+                },
                 remote:{
                 	delay: 1000,
-                	url:'buscaLibroPorTitulo',
-                	message : 'El titulo ya existe'
-                }*/
+                	url:'buscaLibroPorTituloConIdLibro',
+                	message : 'El titulo ya existe',
+                	data: {
+		                titulo: function() {
+		                    // Obtén el valor del correo electrónico desde donde lo tengas en tu formulario
+		                    return $('#id_act_titulo').val();
+		                },
+		                id: function() {
+		                    // Obtén el valor del ID desde donde lo tengas en tu formulario
+		                    return $('#id_ID').val();
+		                }
+		            },
+                    onSuccess: function (e, data) {
+                        if (data.result === true) {
+                            // The title is valid, proceed with form submission
+                        	$('#id_form_actualiza').bootstrapValidator('updateStatus', 'titulo', 'INVALID', 'remote');
+                        } else {
+                            // The title already exists, show an error message
+                            //$('#id_form_registra').bootstrapValidator('updateStatus', 'titulo', 'INVALID', 'remote');
+                        }
+                    }
+                }
             }
         },
         anio: {
