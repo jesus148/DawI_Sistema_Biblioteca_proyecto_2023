@@ -31,8 +31,8 @@ public class LibroCrudController {
 
 	@PostMapping("/actualizaCrudLibro")
 	@ResponseBody
-	public Map<?, ?> actualiza(Libro obj, HttpSession session){
-		Usuario objUsuario = (Usuario)session.getAttribute("objUsuario");
+	public Map<?, ?> actualiza(Libro obj, HttpSession session) {
+		Usuario objUsuario = (Usuario) session.getAttribute("objUsuario");
 		HashMap<String, Object> map = new HashMap<String, Object>();
 
 		Optional<Libro> optLibro = service.buscaLibro(obj.getIdLibro());
@@ -45,9 +45,29 @@ public class LibroCrudController {
 		if (objSalida == null) {
 			map.put("mensaje", "Error en actualizar");
 		} else {
-			List<Libro> lista = service.buscaPorTitulo("%");
+			List<Libro> lista = service.listaPorTituloLike("%");
 			map.put("lista", lista);
 			map.put("mensaje", "Actualización exitosa");
+		}
+		return map;
+	}
+
+	@ResponseBody
+	@PostMapping("/eliminaCrudLibro")
+	public Map<?, ?> elimina(int id, HttpSession session) {
+		Usuario objUsuario = (Usuario) session.getAttribute("objUsuario");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		Libro objLibro = service.buscaLibro(id).get();
+		objLibro.setFechaActualizacion(new Date());
+		objLibro.setEstado(objLibro.getEstado() == 1 ? 0 : 1);
+		objLibro.setUsuarioActualiza(objUsuario);
+		Libro objSalida = service.actualizaLibro(objLibro);
+		if (objSalida == null) {
+			map.put("mensaje", "Error en actualizar");
+		} else {
+			List<Libro> lista = service.listaPorTituloLike("%");
+			map.put("lista", lista);
 		}
 		return map;
 	}
