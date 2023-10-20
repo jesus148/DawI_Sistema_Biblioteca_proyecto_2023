@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.centroinformacion.entity.Autor;
 import com.centroinformacion.repository.AutorRepository;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 @Service
@@ -45,9 +46,9 @@ public class AutorServiceImpl implements AutorService {
 
 
 
-	
-	//metodo para buscar manera personalizda
-
+	//metodo para buscar y no repetir proveedor
+	//metodo para buscar manera personalizda EN EL SPRING
+    //ES LO MSIMO DE ARRIBA
 	@Override
 	public List<Autor> buscaPorNombreSegundo(String nombre) {
 	
@@ -58,6 +59,12 @@ public class AutorServiceImpl implements AutorService {
 
 	
 	
+	
+	//METODO PARA NO PERMITIR REGISTRAR AUTOR Q TENGAN EL MISMO NOMBRE O APELLIDO
+	@Override
+	public List<Autor> listaPorNombreApellidoIgual(String nombres, String apellidos) {
+		return repository.listaEmpleadoPorNombreApellidoIgual(nombres, apellidos);
+	}
 	
 	
 	
@@ -72,6 +79,7 @@ public class AutorServiceImpl implements AutorService {
 	
 	//METODOS PARA EL CRUD
 
+	//METODO ACTUALIZAR PARECIDO A INSERTAR
 	@Override
 	public Autor actualizaAutor(Autor obj) {
 		return repository.save(obj);
@@ -79,15 +87,25 @@ public class AutorServiceImpl implements AutorService {
 
 
 
-
+	//METODO PARA LISTAR ALL EN LA TABLA
 	@Override
-	public List<Autor> listaPorNombreLike(String nombre) {
-		return repository.listaPorNombreLike(nombre);
+	public List<Autor> listaPorNombreLike(String nombres) {
+		return repository.listaPorNombreLike(nombres);
 	}
 
 
 
+	
+	//OTRA FORMA DE LISTAR
+	//METODO PARA LISTAR ALL EN LA TABLA
+	@Override
+	public List<Autor> listaPorNombresLike(String nombres) {
+		return repository.findByNombresLike(nombres);
+	}
+	
+	
 
+	//METODO PARA BUSCAR MODALIDAD SEGUN EL ID
 	@Override
 	public Optional<Autor> buscaAutor(int idAutor) {
 		return repository.findById(idAutor);

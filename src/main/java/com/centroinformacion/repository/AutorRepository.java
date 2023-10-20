@@ -8,6 +8,8 @@ import org.springframework.data.jpa.repository.Query;
 import com.centroinformacion.entity.Autor;
 
 
+
+
 public interface AutorRepository  extends JpaRepository<Autor, Integer>{
 	
 	
@@ -30,7 +32,7 @@ public interface AutorRepository  extends JpaRepository<Autor, Integer>{
 	
 	
 //	ojo : tambien (String nombres) en el parametro se debe poner el atributo tal como esta en la clase guia
-	
+	//CONSULTA DE SPRING
 	public abstract List<Autor> findByNombresIgnoreCase(String nombres);	
 	
 	
@@ -61,14 +63,21 @@ public interface AutorRepository  extends JpaRepository<Autor, Integer>{
 	//CRUD 
 
 	
+	//METODO PARA LISTAR ALL EN LA TABLA , CONSULTA PERSONALIZADA
 	//lista , 1 se refiere al primer parametro (osea los q ingresan)
 	@Query("select x from Autor x where x.nombres like ?1")    
-	public List<Autor> listaPorNombreLike(String filtro);
+	public List<Autor> listaPorNombreLike(String nombres);
 	
 	
 	
+	//OTRA FORMA DE LISTAR
+	public List<Autor> findByNombresLike(String nombres);
 	
 	
+	
+	//METODO PARA NO PERMITIR REGISTRAR AUTOR Q TENGAN EL MISMO NOMBRE O APELLIDO
+	@Query("select e from Autor e where e.nombres = ?1 and e.apellidos = ?2 ")
+	public List<Autor> listaEmpleadoPorNombreApellidoIgual(String nombres, String apellidos);
 	
 	
 	

@@ -1,6 +1,8 @@
 package com.centroinformacion.service;
 
 import com.centroinformacion.entity.Autor;
+
+
 import java.util.List;
 import java.util.Optional;
 
@@ -40,14 +42,38 @@ public interface AutorService {
 	
 	
 	
-	//CRUD PC2
+	//CRUD PC2=================
 	
 	
 	
 	
+	//METODO SIRVA PARA ACUTALIZAR
 	public abstract Autor actualizaAutor(Autor obj);
-	public abstract List<Autor> listaPorNombreLike(String nombre);
+	
+	
+	//METODO PARA LISTAR ALL EN LA TABLA
+	public abstract List<Autor> listaPorNombreLike(String nombres);
+	
+	
+	//OTRA FORMA DE LISTA CON METODOS DE SPRING
+	public abstract List<Autor> listaPorNombresLike(String nombres);
+	
+	
+	//METODO PARA BUSCAR MODALIDAD SEGUN EL ID
+		/*
+		 * Proporciona una forma clara y explícita de transmitir el mensaje de que puede
+		 * que no haya un valor, sin utilizar null . Al obtener un tipo de devolución
+		 * Opcional , es probable que verifiquemos si falta el valor, lo que genera
+		 * menos NullPointerException en las aplicaciones. Sin embargo, el tipo Opcional
+		 * no es adecuado en todos los lugares.
+		 */
+	
 	public abstract Optional<Autor> buscaAutor(int idAutor);
+	
+	
+	
+	//METODO PARA NO PERMITIR REGISTRAR AUTOR Q TENGAN EL MISMO NOMBRE O APELLIDO
+	public abstract List<Autor> listaPorNombreApellidoIgual(String nombres, String apellidos); 
 	
 	
 	
