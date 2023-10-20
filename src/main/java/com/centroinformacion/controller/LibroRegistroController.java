@@ -62,4 +62,5 @@ public class LibroRegistroController {
 			return "{\"valid\" : false }";
 		}
 	}
+	
 }
