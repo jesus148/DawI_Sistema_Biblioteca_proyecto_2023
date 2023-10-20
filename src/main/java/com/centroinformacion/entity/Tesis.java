@@ -31,7 +31,7 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Tesis {
   
-
+//las entidades siempre con mayusculas
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idTesis;
