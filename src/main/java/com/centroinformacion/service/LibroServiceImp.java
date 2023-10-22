@@ -42,6 +42,16 @@ public class LibroServiceImp implements LibroService{
 	@Override
 	public List<Libro> buscaPorIdyTitulo(String libro, int idLibro) {
 		// TODO Auto-generated method stub
-		return repository.bucaPorTituloyIdLibro(libro, idLibro);
+		return repository.buscaPorTituloyIdLibro(libro, idLibro);
+	}
+	@Override
+	public List<Libro> buscaPorSerie(String serie) {
+		// TODO Auto-generated method stub
+		return repository.findBySerieIgnoreCase(serie);
+	}
+	@Override
+	public List<Libro> buscaPorIdySerie(String serie, int idLibro) {
+		// TODO Auto-generated method stub
+		return repository.buscaPorSerieyIdLibro(serie, idLibro);
 	}
 }

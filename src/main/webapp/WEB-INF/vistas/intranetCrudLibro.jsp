@@ -308,6 +308,7 @@ function accionEliminar(id){
 $(document).ready(function() {
     // Limpia el validador cuando se oculta el modal de registro
     $('#id_div_modal_registra').on('hidden.bs.modal', function() {
+    	limpiarFormulario();
         $('#id_form_registra').bootstrapValidator('resetForm');
     });
 
@@ -402,11 +403,10 @@ $('#id_form_registra').bootstrapValidator({
                 	min : 2,
                 	max : 40
                 },
-                
                 remote:{
                 	delay: 1000,
                 	url:'buscaLibroPorTitulo',
-                	message : 'El titulo ya existe'
+                	message : 'El título ya existe'
                 }
             }
         },
@@ -426,11 +426,16 @@ $('#id_form_registra').bootstrapValidator({
     		selector : '#id_reg_serie',
             validators: {
                 notEmpty: {
-                    message: 'El serie es un campo obligatorio'
+                    message: 'La serie es un campo obligatorio'
                 },
                 regexp: {
-                    regexp: /^[a-zA-Z]{2}[0-9]{3}$/,
-                    message: 'La serie debe tener 2 letras seguidas de 3 números'
+                    regexp: /^[A-Z]{2}[0-9]{3}$/,
+                    message: 'La serie debe tener 2 letras mayúsculas seguidas de 3 números'
+                },
+                remote:{
+                	delay: 1000,
+                	url:'buscaLibroPorSerie',
+                	message : 'La serie ya existe'
                 }
             }
         },
@@ -438,7 +443,7 @@ $('#id_form_registra').bootstrapValidator({
     		selector : '#id_reg_categoriaLibro',
             validators: {
             	notEmpty: {
-                    message: 'Categoria es un campo obligatorio'
+                    message: 'Categoría es un campo obligatorio'
                 }
             }
         },
@@ -487,26 +492,16 @@ $('#id_form_actualiza').bootstrapValidator({
                 remote:{
                 	delay: 1000,
                 	url:'buscaLibroPorTituloConIdLibro',
-                	message : 'El titulo ya existe',
+                	message : 'El título ya existe',
                 	data: {
 		                titulo: function() {
-		                    // Obtén el valor del correo electrónico desde donde lo tengas en tu formulario
 		                    return $('#id_act_titulo').val();
 		                },
 		                id: function() {
-		                    // Obtén el valor del ID desde donde lo tengas en tu formulario
+		                  
 		                    return $('#id_ID').val();
 		                }
-		            },
-                    onSuccess: function (e, data) {
-                        if (data.result === true) {
-                            // The title is valid, proceed with form submission
-                        	$('#id_form_actualiza').bootstrapValidator('updateStatus', 'titulo', 'INVALID', 'remote');
-                        } else {
-                            // The title already exists, show an error message
-                            //$('#id_form_registra').bootstrapValidator('updateStatus', 'titulo', 'INVALID', 'remote');
-                        }
-                    }
+		            }
                 }
             }
         },
@@ -526,11 +521,25 @@ $('#id_form_actualiza').bootstrapValidator({
     		selector : '#id_act_serie',
             validators: {
                 notEmpty: {
-                    message: 'El serie es un campo obligatorio'
+                    message: 'La serie es un campo obligatorio'
                 },
                 regexp: {
-                    regexp: /^[a-zA-Z]{2}[0-9]{3}$/,
-                    message: 'El año debe tener 2 letras seguidas de 3 números'
+                    regexp: /^[A-Z]{2}[0-9]{3}$/,
+                    message: 'La serie debe tener 2 letras mayúsculas seguidas de 3 números'
+                },
+                remote:{
+                	delay: 1000,
+                	url:'buscaLibroPorSerieConIdLibro',
+                	message : 'La serie ya existe',
+                	data: {
+		                serie: function() {
+		                    return $('#id_act_serie').val();
+		                },
+		                id: function() {
+		                  
+		                    return $('#id_ID').val();
+		                }
+		            }
                 }
             }
         },
@@ -538,7 +547,7 @@ $('#id_form_actualiza').bootstrapValidator({
     		selector : '#id_act_categoriaLibro',
             validators: {
             	notEmpty: {
-                    message: 'Categoria es un campo obligatorio'
+                    message: 'Categoría es un campo obligatorio'
                 }
             }
         },
