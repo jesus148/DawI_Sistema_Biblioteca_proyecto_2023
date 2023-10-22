@@ -111,4 +111,27 @@ public class LibroCrudController {
 		}
 	}
 	
+	@GetMapping("/buscaLibroPorSerieConIdLibro")
+	@ResponseBody
+	public String validaSerieConIdLibro(String serie, String id) {
+		int idLibro = Integer.parseInt(id);
+		List<Libro> lstLibro = service.buscaPorIdySerie(serie, idLibro);
+		if (CollectionUtils.isEmpty(lstLibro)) {
+			return "{\"valid\" : true }";
+		} else {
+			return "{\"valid\" : false }";
+		}
+	}
+	
+	@GetMapping("/buscaLibroPorSerie")
+	@ResponseBody
+	public String validaSerie(String serie){
+		List<Libro> lstLibro = service.buscaPorSerie(serie);
+		if(CollectionUtils.isEmpty(lstLibro)) {
+			return "{\"valid\" : true }";
+		} else {
+			return "{\"valid\" : false }";
+		}
+	}
+	
 }
