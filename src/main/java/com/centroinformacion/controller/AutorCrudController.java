@@ -30,6 +30,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.ResponseBody;
 
+
+//@CommonsLog : para imprimier por consola
+
 @CommonsLog
 @Controller
 public class AutorCrudController {
@@ -84,11 +87,21 @@ public class AutorCrudController {
 		
 		
 		
+		//ESTO PARA QUE NO RGISTRE UN AUTOR MISMO NOMBRE Y APELLIDO SALDRA UN ALERT AL BUSCAR 
 		//METODO PARA NO PERMITIR REGISTRAR EMPLEADO Q TENGAN EL MISMO NOMBRE O APELLIDO
 		List<Autor> lstSalida = autorService.listaPorNombreApellidoIgual(obj.getNombres(), obj.getApellidos());
 		//CollectionUtils.isEmpty : dara true si esta vacio y false si esta lleno
 		if (!CollectionUtils.isEmpty(lstSalida)) {
 			map.put("mensaje", "El Autor " + obj.getNombres() + " " + obj.getApellidos() + " ya existe");
+			
+			
+			
+			//IGUAL SI N0 LO ENCUENTRA LO VUELVE A LISTAR
+             List<Autor> lista = autorService.listaPorNombresLike("%%");
+ 			//es para listar 
+ 			map.put("lista", lista);
+
+
 			return map; //FINALIZA EL PROCESO
 		}
 		
@@ -151,6 +164,16 @@ public class AutorCrudController {
 		obj.setUsuarioRegistro(optAutor.get().getUsuarioRegistro());
 		
 	
+		
+		
+		
+	
+		
+		
+		
+		
+		
+		
 		//ACTUALIZAMOS MODALIDAD
 		Autor objSalida = autorService.actualizaAutor(obj);
 		
@@ -283,6 +306,53 @@ public class AutorCrudController {
 			return "{\"valid\":false}"; // y sino no lo registra
 		}
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+     //8
+	//METODO BUSCA POR DNI Y NOMBRE
+	//METODO NO PERMITE REGISTRAR EMPLEADOS CON EL MISMO TELEFONO
+	@GetMapping("/listaEmpleadoPorNombreTelefonoIgual")
+	@ResponseBody
+	public String listaEmpleadoPorNombreTelefonoIgual(String nombres, String telefono) {
+		
+		List<Autor> lstSalida = autorService.listaEmpleadoPorNombreTelefonoIgual(
+				nombres, 
+				telefono);
+		
+		if(lstSalida.isEmpty()) {
+			return "{\"valid\":true}";
+		}else {
+			return "{\"valid\":false}";
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	

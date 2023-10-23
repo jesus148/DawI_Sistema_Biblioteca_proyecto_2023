@@ -82,7 +82,12 @@ public interface AutorRepository  extends JpaRepository<Autor, Integer>{
 	
 	
 	
+	//METODO BUSCA POR DNI Y NOMBRE
+	//METODO NO PERMITE REGISTRAR EMPLEADOS CON EL MISMO TELEFONO
+	@Query("select e from Autor e where e.nombres = ?1 and e.telefono = ?2 ")
+	public List<Autor> listaEmpleadoPorNombreTelefonoIgual(String nombres, String telefono);
 	
+
 	
 	
 	
