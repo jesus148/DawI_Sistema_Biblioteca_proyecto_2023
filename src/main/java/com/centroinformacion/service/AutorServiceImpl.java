@@ -118,7 +118,13 @@ public class AutorServiceImpl implements AutorService {
 	
 	
 	
-	
+	//METODO BUSCA POR DNI Y NOMBRE
+	//METODO NO PERMITE REGISTRAR EMPLEADOS CON EL MISMO TELEFONO
+	//public abstract List<Autor> listaEmpleadoPorNombreTelefonoIgual(String nombres, String telefono);
+	@Override
+	public List<Autor> listaEmpleadoPorNombreTelefonoIgual(String nombres, String telefono) {
+		return repository.listaEmpleadoPorNombreTelefonoIgual(nombres , telefono);
+	}
 	
 	
 	

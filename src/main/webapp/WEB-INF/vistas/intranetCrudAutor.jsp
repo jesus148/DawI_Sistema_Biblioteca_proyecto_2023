@@ -58,9 +58,9 @@
 												<th style="width: 5%">ID</th>
 												<th style="width: 22%">Nombre</th>
 												<th style="width: 23%">Apellidos</th>
-												<th style="width: 15%">FechaNacimiento</th>
-												<th style="width: 15%">Pais</th>
-												<th style="width: 15%">Telefono</th>
+												<th style="width: 15%">Fecha Nacimiento</th>
+												<th style="width: 15%">País</th>
+												<th style="width: 15%">Teléfono</th>
                                 <!-- 	BOTONES CON EVENTOS  -->
 												<th style="width: 10%">Actualiza</th> <!--MODAL ACTUALIZA -->
 												<th style="width: 10%">Elimina</th> <!-- CAMBIA EL ESTADO -->
@@ -133,15 +133,16 @@
 		                                    <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_reg_pais">País</label>
 		                                        <div class="col-lg-3">
-													 <select id="id_reg_pais" name="pais.idPais" class='form-control'>
-							                            	<option value=" ">[Seleccione]</option>    
+		                                        <!-- recordar q cuando es modal se pone asi los name de los combos -->
+													 <select id="id_reg_pais" name="pais" class='form-control'>
+							                            		<option value=" ">[Seleccione]</option>    
 							                         </select>
 		                                        </div>
 		                                    </div>
 		                                  <div class="form-group">
 		                                        <label class="col-lg-3 control-label" for="id_reg_grado">Grado</label>
 		                                        <div class="col-lg-3">
-													 <select id="id_reg_grado" name="grado.idDataCatalogo" class='form-control'>
+													 <select id="id_reg_grado" name="grado" class='form-control'>
 							                            	<option value=" ">[Seleccione]</option>    
 							                         </select>
 		                                        </div>
@@ -202,7 +203,7 @@
 		                                        </div>
 		                                     </div>
 		                                     <div class="form-group">
-		                                        <label class="col-lg-3 control-label" for="id_nombres">Nombre</label>
+		                                        <label class="col-lg-3 control-label" for="id_act_nombre">Nombre</label>
 		                                        <div class="col-lg-3">
 													<input class="form-control" id="id_act_nombre" name="nombres" placeholder="Ingrese el Nombre" type="text" maxlength="40"/>
 		                                        </div>
@@ -234,7 +235,7 @@
                          pais : contiene la clase Pais  , .idPais es 1 atributo(id ) de esa clase Pais(clase guia)
                           -->
 		                                        <div class="col-lg-3">
-													<select id="id_act_pais" name="pais.idPais" class='form-control'>
+													<select id="id_act_pais" name="pais" class='form-control'>
 							                            	<option value=" ">[Seleccione]</option>    
 							                         </select>
 		                                        </div>
@@ -244,7 +245,7 @@
 		                                        <div class="col-lg-3">
 		                                        <!-- 					     guiarse de las clases guias aqui en spring  -->
 <!-- 					     grado : contiene la clase DataCatalogo  , .idDataCatalogo es 1 atributo(id ) de esa clase DataCatalogo(clase guia) -->
-													<select id="id_act_grado" name="grado.idDataCatalogo" class='form-control'>
+													<select id="id_act_grado" name="grado" class='form-control'>
 							                            	<option value=" ">[Seleccione]</option>    
 							                         </select>
 		                                        </div>
@@ -410,7 +411,7 @@ $("#id_btn_registra").click(function(){
       	  agregarGrilla(data.lista); //lista de la variable map = al controller
       	  $('#id_div_modal_registra').modal("hide"); //esconde el modal
       	  mostrarMensaje(data.mensaje);//mustra mensaje , mensaje es la variable map = al controller 
-      	  limpiarFormulario(); //limpia el formulario
+      	limpiarFormulario(); //limpia el formulario
       	  validator.resetForm();
         },
         error: function(){
@@ -436,7 +437,7 @@ function limpiarFormulario(){
 	$('#id_reg_apellidos').val('');
 	$('#id_reg_fechaNacimiento').val('');
 	$('#id_reg_telefono').val('');
-	$('#id_reg_pais').val('');
+	$('#id_reg_pais').val('0');
 	$('#id_reg_grado').val(' ');
 }
 
@@ -535,16 +536,17 @@ $("#id_btn_actualiza").click(function(){
                         //delay:Retraso para mostrar y ocultar la información Si se proporciona un número, se aplica un retraso para ocultar ambos.
                         //Número de milisegundos que se deben esperar antes de mostrar un error en un campo de formulario.
                         //OJO : cuando escribas en el input escribe la palabra o el valor completo = ala bd ahi verifica si existe
-                        remote:{
-                    	    delay: 1000,
-                    	    //1 forma buscan consulta con sql de spring
-                    	 	//url: 'buscaPorAutor', //el url en controller debe ser =
+//                         remote:{
+//                     	    delay: 1000,
+//                     	    //1 forma buscan consulta con sql de spring
+//                     	 	//url: 'buscaPorAutor', //el url en controller debe ser =
                     	 		
                     	 		
-                    	 	//2 forma buscar usando sql personalizado osea el sql para las clases en java	
-                    	 	url: 'buscaTituloAutor', //el url en controller debe ser =
-                    	 	message: 'El autor ya existe ya existe'
-                     	}
+//                     	 	//2 forma buscar usando sql personalizado osea el sql para las clases en java	
+//                           este metetodo esta en el registra 
+//                     	 	url: 'buscaTituloAutor', //el url en controller debe ser =
+//                     	 	message: 'El autor ya existe ya existe'
+//                      	}
                     }
                 },
                 "apellidos":{
@@ -567,7 +569,7 @@ $("#id_btn_actualiza").click(function(){
                         notEmpty: {
                              message: 'La fecha es obligatorio'
                         },
-                        //ACA BUSCAREMOS Q EL EMPLEADO SEA MAYOR DE EDAD
+                        //ACA BUSCAREMOS Q EL EMPLEADO SEA MAYOR DE EDAD , ahi mismo en ese input rapidamente
                         remote:{
                         	delay:1000,
                         	url:	'buscaEmpleadoMayorEdad', //URL DE CONTROLLER
@@ -588,6 +590,21 @@ $("#id_btn_actualiza").click(function(){
                         regexp: {
                             regexp: /^[0-9]{9}$/,
                             message: 'el telefono es 9 dígitos'
+                        },
+                        remote :{
+                        	delay   : 1000,
+                        	url     : 'listaEmpleadoPorNombreTelefonoIgual',
+                        	message : 'El telefono ya existe',
+                        	data: {
+                        		//METODO NO PERMITE REGISTRA AUTORES CON EL MISMO TELEFONO
+                        		// esto se hace al escribir automatico sin dar en el boton
+            		                nombres: function() {
+            		                    return $('#id_reg_nombres').val();
+            		                },
+            		                telefono: function() {
+            		                    return $('#id_reg_telefono').val();
+            		                }
+            		        },
                         }
                     }
                 },
@@ -607,7 +624,7 @@ $("#id_btn_actualiza").click(function(){
      
                 
                 
-              "grado": {
+              "grado.idDataCatalogo": {
         		selector : '#id_reg_grado',
                 validators: {
                     notEmpty: {
@@ -673,6 +690,14 @@ $("#id_btn_actualiza").click(function(){
                 validators:{
                     notEmpty: {
                          message: 'La fecha es obligatorio'
+                    },
+                    //ACA BUSCAREMOS Q EL EMPLEADO SEA MAYOR DE EDAD
+                    remote:{
+                    	delay:1000,
+                    	url:	'buscaEmpleadoMayorEdad', //URL DE CONTROLLER
+                    	message:	'el autor debe ser mayor de edad' //mensaje en caso se cumpla
+                    	
+                    	
                     }
                 }
             },
@@ -694,7 +719,7 @@ $("#id_btn_actualiza").click(function(){
 
     
             
-            "pais": {
+            "pais.idPais": {
         		selector : '#id_act_pais',
                 validators: {
                     notEmpty: {
@@ -708,7 +733,7 @@ $("#id_btn_actualiza").click(function(){
  
             
             
-          "grado": {
+          "grado.idDataCatalogo": {
     		selector : '#id_act_grado',
             validators: {
                 notEmpty: {

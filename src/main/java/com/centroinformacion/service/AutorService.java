@@ -78,4 +78,9 @@ public interface AutorService {
 	
 	
 	
+	//METODO BUSCA POR DNI Y NOMBRE
+	//METODO NO PERMITE REGISTRAR EMPLEADOS CON EL MISMO TELEFONO
+	public abstract List<Autor> listaEmpleadoPorNombreTelefonoIgual(String nombres, String telefono);
+	
+	
 }
