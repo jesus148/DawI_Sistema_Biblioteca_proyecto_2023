@@ -184,7 +184,7 @@ $('#id_form').bootstrapValidator({
                 },
                 regexp: {
                 regexp: /^[0-9]+$/, 
-                message: 'El tema debe contener solo digitos numericos'
+                message: 'El Numero de Alumno debe contener solo digitos numericos'
                 }
             }
         },
