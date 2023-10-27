@@ -474,11 +474,19 @@ if (validator.isValid()) {
                         max: 40,
                         message: 'El titulo es de 3 a 40 caracteres'
                     },
-                   // remote:{
-                	 //   delay: 1000,                
-                	 	//url: 'buscaTesisPorTitulo', 
-                	 	//message: 'El titulo ya existe'
-                 	//}
+                    remote:{
+                	    delay: 1000,                
+                	 	url: 'buscaTesisPorTituloActualiza', 
+                	 	message: 'El titulo ya existe',
+                	 	data: {
+        		             titulo: function() {
+        		                  return $('#id_act_titulo').val();
+        		              },
+        		              idTesis: function() {
+        		                    return $('#id_ID').val();
+        		               }
+                	 	}
+                 	}
                 }
             },
 

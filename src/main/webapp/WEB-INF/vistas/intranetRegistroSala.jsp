@@ -63,8 +63,8 @@
 
                 <div class="row">
                     <div class="form-group col-md-3">
-                        <label class="control-label" for="id_sesde">Sede</label>
-                        <select id="id_sesde" name="sesde.idDataCatalogo" class='form-control'>
+                        <label class="control-label" for="id_sede">Sede</label>
+                        <select id="id_sede" name="sede.idDataCatalogo" class='form-control'>
                             <option value=" ">[Seleccione]</option>    
                         </select>
                     </div>
@@ -93,7 +93,7 @@ $.getJSON("listaTipoSala", {}, function(data){
 });
 $.getJSON("listaSede", {}, function(data){
 	$.each(data, function(index,item){
-		$("#id_sesde").append("<option value="+item.idDataCatalogo +">"+ item.descripcion +"</option>");
+		$("#id_sede").append("<option value="+item.idDataCatalogo +">"+ item.descripcion +"</option>");
 	});
 });
 
@@ -124,7 +124,7 @@ function limpiarFormulario(){
 	$("#id_numAlumnos").val('');
 	$("#id_recursos").val(' ');
 	$("#id_tipoSala").val(' ');
-    $("#id_tipoSesde").val(' ');
+    $("#id_tipoSede").val(' ');
 }
 $('#id_form').bootstrapValidator({
     message: 'This value is not valid',

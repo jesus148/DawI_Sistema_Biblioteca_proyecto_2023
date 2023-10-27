@@ -136,9 +136,9 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="col-lg-3 control-label" for="id_reg_sesde">Sede</label>
+                                    <label class="col-lg-3 control-label" for="id_reg_sede">Sede</label>
                                     <div class="col-lg-3">
-                                        <select id="id_reg_sesde" name="tipoSede" class='form-control'>
+                                        <select id="id_reg_sede" name="tipoSede" class='form-control'>
                                             <option value=" ">[Seleccione]</option>
                                         </select>
                                     </div>
@@ -228,9 +228,9 @@
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="col-lg-3 control-label" for="id_act_sesde">Sede</label>
+                                            <label class="col-lg-3 control-label" for="id_act_sede">Sede</label>
                                             <div class="col-lg-3">
-                                                <select id="id_act_sesde" name="sesde.idDataCatalogo"
+                                                <select id="id_act_sede" name="sede.idDataCatalogo"
                                                     class='form-control'>
                                                     <option value=" ">[Seleccione]</option>
                                                 </select>
@@ -268,8 +268,8 @@
 
         $.getJSON("listaSede", {}, function (data) {
             $.each(data, function (index, item) {
-                $("#id_reg_sesde").append("<option value=" + item.idDataCatalogo + ">" + item.descripcion + "</option>");
-                $("#id_act_sesde").append("<option value=" + item.idDataCatalogo + ">" + item.descripcion + "</option>");
+                $("#id_reg_sede").append("<option value=" + item.idDataCatalogo + ">" + item.descripcion + "</option>");
+                $("#id_act_sede").append("<option value=" + item.idDataCatalogo + ">" + item.descripcion + "</option>");
             });
         });
 
@@ -296,10 +296,10 @@
                     { data: "numAlumnos" },
                     { data: "recursos" },
                     { data: "tipoSala.idDataCatalogo" },
-                    { data: "sesde.idDataCatalogo" },
+                    { data: "sede.idDataCatalogo" },
                     {
                         data: function (row, type, val, meta) {
-                            var salida = '<button type="button" style="width: 90px" class="btn btn-info btn-sm" onclick = "editar(\''+row.idSala + '\',\'' + row.numero +'\',\'' + row.piso  +'\',\'' + row.numAlumnos + '\',\'' + row.recursos + '\',\'' + row.tipoSala.idDataCatalogo + '\',\'' +  row.sesde.idDataCatalogo +'\')" > Editar</button > ';
+                            var salida = '<button type="button" style="width: 90px" class="btn btn-info btn-sm" onclick = "editar(\''+row.idSala + '\',\'' + row.numero +'\',\'' + row.piso  +'\',\'' + row.numAlumnos + '\',\'' + row.recursos + '\',\'' + row.tipoSala.idDataCatalogo + '\',\'' +  row.sede.idDataCatalogo +'\')" > Editar</button > ';
                             return salida;
                         }, className: 'text-center'
                     },
@@ -394,7 +394,7 @@
             $('#id_act_numAlu').val(numAlu);
             $('#id_act_recursos').val(recursos);
             $('#id_act_tipo').val(tipo);
-            $('#id_act_sesde').val(sede);
+            $('#id_act_sede').val(sede);
             $('#id_div_modal_actualiza').modal("show");
         }
         function limpiarFormulario() {
@@ -486,8 +486,8 @@
                         }
                     }
                 },
-                "row.sesde.idDataCatalogo": {
-                    selector: '#id_reg_sesde',
+                "row.sede.idDataCatalogo": {
+                    selector: '#id_reg_sede',
                     validators: {
                         notEmpty: {
                             message: 'Sede es un campo obligatorio'
@@ -587,8 +587,8 @@
                         }
                     }
                 },
-                "row.sesde.idDataCatalogo": {
-                    selector: '#id_reg_sesde',
+                "row.sede.idDataCatalogo": {
+                    selector: '#id_reg_sede',
                     validators: {
                         notEmpty: {
                             message: 'Sede es un campo obligatorio'

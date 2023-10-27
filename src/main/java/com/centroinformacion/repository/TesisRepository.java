@@ -16,4 +16,7 @@ public interface TesisRepository extends JpaRepository<Tesis, Integer> {
 	//?2 aludiria al segundo parametro 
 	@Query("select x from Tesis x where x.titulo like ?1")
 	public List<Tesis> listaPorTituloLike(String filtro);
+	
+	@Query("select x from Tesis x where x.titulo = ?1 and x.idTesis != ?2")
+	public  List<Tesis> buscaPorTituloActualiza(String titulo, int idTesis);
 }

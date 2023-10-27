@@ -25,9 +25,8 @@
 </head>
 <body>
 <jsp:include page="intranetCabecera.jsp" />
-<div class="container" style="margin-top: 4%"><h4>CRUD Libro</h4></div>
 
-<div class="container" style="margin-top: 1%">
+<div class="container" style="margin-top: 4%">
 <!-- Agregar aquí -->
 	<h3>Crud de Libro</h3>
 		 <div class="col-md-23" >  

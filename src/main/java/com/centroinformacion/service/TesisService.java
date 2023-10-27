@@ -9,6 +9,7 @@ public interface TesisService {
 	
 	public abstract Tesis insertaTesis(Tesis obj);
 	public  List<Tesis> buscaPorTitulo(String titulo);
+	public  List<Tesis> buscaPorTituloActualiza(String titulo, int idTesis);
 	//agregamos metodos para el crud 
 	public abstract Tesis actualizaTesis(Tesis obj);
 	public abstract List<Tesis> listaPorTituloLike(String filtro);

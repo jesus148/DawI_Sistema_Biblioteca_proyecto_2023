@@ -45,6 +45,12 @@ public class TesisServiceImpl implements TesisService{
 		return repository.findById(idTesis);
 	}
 
+	@Override
+	public List<Tesis> buscaPorTituloActualiza(String titulo, int idTesis) {
+
+		return repository.buscaPorTituloActualiza(titulo, idTesis);
+	}
+
 	
 
 
