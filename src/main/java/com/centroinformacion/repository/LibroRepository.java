@@ -20,4 +20,14 @@ public interface LibroRepository extends JpaRepository<Libro, Integer> {
 	public abstract List<Libro> buscaPorSerieyIdLibro(String serie, int id);
 	
 	
+	//Consulta
+		@Query("select l from Libro l where "
+				+ "( l.estado = ?1)  and "
+				+ "( ?2 = -1  or l.categoriaLibro.idDataCatalogo = ?2 ) and "
+				+ "( ?3 = -1  or l.tipoLibro.idDataCatalogo = ?3 ) and "
+				+ "( ?4 = -1  or l.estadoPrestamo.idDataCatalogo = ?4 ) and "
+				+ "( l.titulo like ?5) and"
+				+ "( l.serie like ?6 ) and"
+				+ "( ?7 = -1  or l.anio = ?7 )") 
+		public abstract List<Libro> listaConsultaLibro(int estado, int idCategoriaLibro, int idTipoLibro, int idEstadoPrestamo, String titulo, String serie,  int anio);
 }

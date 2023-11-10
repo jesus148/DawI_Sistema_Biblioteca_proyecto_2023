@@ -65,6 +65,21 @@ public class Libro {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idUsuarioActualiza")
 	private Usuario usuarioActualiza;
+	
+	//Atributos para el reporte
+		public String getReporteEstado() {
+			return estado == 1? "Activo": "Inactivo";
+		}
+		
+		public String getReporteCategoria() {
+			return  categoriaLibro.getIdDataCatalogo() + " - " + categoriaLibro.getDescripcion();
+		}
+		public String getReporteTipo() {
+			return  tipoLibro.getIdDataCatalogo() + " - " + tipoLibro.getDescripcion();
+		}
+		public String getReporteEstadoPrestamo() {
+			return  estadoPrestamo.getIdDataCatalogo() + " - " + estadoPrestamo.getDescripcion();
+		}
 }
 
 
