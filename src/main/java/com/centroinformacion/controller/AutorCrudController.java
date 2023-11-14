@@ -96,7 +96,7 @@ public class AutorCrudController {
 			
 			
 			
-			//IGUAL SI N0 LO ENCUENTRA LO VUELVE A LISTAR
+			//IGUAL SI N0 LO ENCUENTRA LO VUELVE A LISTAR s
              List<Autor> lista = autorService.listaPorNombresLike("%%");
  			//es para listar 
  			map.put("lista", lista);

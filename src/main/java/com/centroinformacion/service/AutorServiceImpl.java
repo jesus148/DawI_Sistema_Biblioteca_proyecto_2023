@@ -2,6 +2,7 @@ package com.centroinformacion.service;
 
 
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -125,6 +126,20 @@ public class AutorServiceImpl implements AutorService {
 	public List<Autor> listaEmpleadoPorNombreTelefonoIgual(String nombres, String telefono) {
 		return repository.listaEmpleadoPorNombreTelefonoIgual(nombres , telefono);
 	}
+
+
+
+
+	@Override
+	public List<Autor> listaConsultaAutorCompleja(int estado, int idPais, int idGrado, String nomApe, Date fecDesde,
+			Date fecHasta) {
+
+		return repository.listaConsultaAutorCompleja(estado, idPais,idGrado,nomApe, fecDesde, fecHasta);
+	}
+	
+	
+	
+	
 	
 	
 	
