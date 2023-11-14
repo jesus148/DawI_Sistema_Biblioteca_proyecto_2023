@@ -3,6 +3,7 @@ package com.centroinformacion.service;
 import com.centroinformacion.entity.Autor;
 
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -81,6 +82,17 @@ public interface AutorService {
 	//METODO BUSCA POR DNI Y NOMBRE
 	//METODO NO PERMITE REGISTRAR EMPLEADOS CON EL MISMO TELEFONO
 	public abstract List<Autor> listaEmpleadoPorNombreTelefonoIgual(String nombres, String telefono);
+	
+	
+	
+	
+	
+	
+	//CONSULTA PARA EL REPORTE CON EL JASPER PDF
+	//CONSULTA COMPLEJA EMPLEADO SEMANA 12
+	public abstract List<Autor> listaConsultaAutorCompleja(int estado, int idPais,int idGrado , String nomApe, Date fecDesde, Date fecHasta);
+	
+	
 	
 	
 }

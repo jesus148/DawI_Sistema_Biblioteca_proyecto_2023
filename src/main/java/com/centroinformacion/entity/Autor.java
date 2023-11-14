@@ -1,5 +1,6 @@
 package com.centroinformacion.entity;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
@@ -46,6 +47,7 @@ public class Autor {
 	
 	//join column : especifica la columna
 		//@ManyToOne : indicar la relacion
+	//PARA USAR EN EL REPORTE DEBE SER IGUAL LOS ATRIBUTOS Y SUS TIPOS DE DATOS EN LOS FIELDS , ADEMAS LOS METODOS GET DEBE SER IGUAL 
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -94,4 +96,43 @@ public class Autor {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idUsuarioActualiza")
 	private Usuario usuarioActualiza;
+	
+	
+	//ATRIBUTOS IGUAL EN EL JASPER REPÓRT EN LOS FIELDS / recorsar sin el get y la primera en minuscula
+	//estos metodos devuelven tipo de dato string , por lo tanto en los fields debe ser string tambien 
+	
+	
+	
+	
+	public String getReporteEstado() {
+		return estado == 1? "Activo" : "Inactivo";
+		
+	}
+	
+	
+	
+	public String getReportePais() {
+		return pais.getIdPais() + "- "+  pais.getNombre();
+		
+	}
+	
+	
+	
+	
+	public String getReporteGrado() {
+		return grado.getIdDataCatalogo() + "- "+  grado.getDescripcion();
+		
+	}
+	
+	
+	public String getReporteFechaNacimiento() {
+		SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+		return sdf.format(fechaNacimiento);
+		
+	}
+	
+	
+	
+	
+	
 }

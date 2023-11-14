@@ -1,11 +1,13 @@
 package com.centroinformacion.repository;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.centroinformacion.entity.Autor;
+
 
 
 
@@ -88,6 +90,31 @@ public interface AutorRepository  extends JpaRepository<Autor, Integer>{
 	public List<Autor> listaEmpleadoPorNombreTelefonoIgual(String nombres, String telefono);
 	
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+    //CONSULTA PERSONALIZADA COMPLEJA 
+	//CONSULTA COMPLEJA AUTOR SEMANA 12
+	//Consulta
+	@Query("select e from Autor e where "
+			+ "( e.estado = ?1)  and "
+			+ "( ?2 = -1  or e.pais.idPais = ?2 ) and "
+			+ "( ?3 = -1 or e.grado.idDataCatalogo = ?3) and "
+			+ "( e.nombres like ?4 or e.apellidos like ?4 ) and"
+			+ "( e.fechaNacimiento >= ?5 ) and"
+			+ "( e.fechaNacimiento <= ?6 )") 
+	public abstract List<Autor> listaConsultaAutorCompleja(int estado, int idPais,int idGrado, String nomApe, Date fecDesde, Date fecHasta);
+	
 	
 	
 	
