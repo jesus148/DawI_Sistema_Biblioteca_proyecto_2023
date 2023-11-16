@@ -49,6 +49,11 @@ public class SalaServiceImpl implements SalaService{
 		return repository.buscaIdNumero(numero);
 	}
 
+	@Override
+	public List<Sala> listaConsultaSala(int idSala,String numero, int piso, int numAlumnos,String recursos, int estado,int idTipoSala, int idSede ) {
+		return repository.listaConsultaSala(estado, idSala, numero, piso, numAlumnos, recursos, idTipoSala, idSede);
+	}
+
 	
 
 	

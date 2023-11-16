@@ -65,5 +65,18 @@ public class Sala {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "idUsuarioActualiza")
 	private Usuario usuarioActualiza;
+	
+	
+	///////////////////////
+	public String getReporteEstado() {
+		return estado == 1? "Activo": "Inactivo";
+	}
+	
+	public String getReporteTipoSala() {
+		return  tipoSala.getIdDataCatalogo() + " - " + tipoSala.getDescripcion();
+	}
+	public String getReporteTipo() {
+		return  sede.getIdDataCatalogo() + " - " + sede.getDescripcion();
+	}
 
 }
