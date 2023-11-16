@@ -18,5 +18,5 @@ public interface SalaService {
 	public abstract Sala actualizarSala(Sala obj);
 	public abstract Optional<Sala> buscaSala (int idSala);
 	
-
+	public abstract List<Sala>listaConsultaSala(int idSala,String numero, int piso, int numAlumnos,String recursos, int estado,int idTipoSala, int idSede );
 }
