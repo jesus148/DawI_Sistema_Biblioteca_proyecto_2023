@@ -19,7 +19,7 @@ public interface SalaRepository extends JpaRepository<Sala, Integer> {
 	public abstract List<Sala> buscaIdNumero(String numero);
 
 	
-	@Query("select s from Libro s where "
+	/*@Query("select s from Libro s where "
 			+ "( s.estado = ?1)  and "
 			+ "( s.idSala = ?2 ) and "
 			+ "( s.numero = ?3)  and "
@@ -29,5 +29,5 @@ public interface SalaRepository extends JpaRepository<Sala, Integer> {
 			+ "( ?7 = -1  or s.tipoSala.idDataCatalogo = ?7 ) and "
 			+ "( ?8 = -1  or s.idSede.idDataCatalogo = ?8 ) and") 
 	public abstract List<Sala> listaConsultaSala(int estado,int idSala,String numero, int piso, int numAlumnos,String recursos,int idTipoSala, int idSede );
-	
+	*/
 }

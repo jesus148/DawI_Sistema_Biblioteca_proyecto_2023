@@ -33,8 +33,10 @@ public class ConsultaSalaController {
 	@GetMapping("/consultaSala")
 	@ResponseBody
 	public List<Sala> consulta (int idSala,String numero, int piso, int numAlumnos,String recursos, int estado,int idTipoSala, int idSede ){
+		/*
 		List<Sala> lstSalida = service.listaConsultaSala( idSala, "%"+numero+"%", piso, numAlumnos, "%"+ recursos+"%", estado, idTipoSala, idSede );
-		return lstSalida;
+		*/
+		return null;
 	}
 
 	
@@ -49,6 +51,7 @@ public class ConsultaSalaController {
 			boolean paramestado,
 			int paramidTipoSala,
 			int paramidSede) {
+	/*
 		try {
 	
 			List<Sala> lstSalida = service.listaConsultaSala(
@@ -87,6 +90,7 @@ public class ConsultaSalaController {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+		*/
 		}
+		
 }
