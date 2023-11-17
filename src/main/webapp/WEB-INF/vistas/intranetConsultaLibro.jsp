@@ -33,7 +33,7 @@
 		
 		<div class="row" style="margin-top: 3%">
 			<div class="col-md-6">
-				<label class="control-label" for="id_titulo">Titulo</label> 
+				<label class="control-label" for="id_titulo">Título</label> 
 				<input class="form-control" type="text" id="id_titulo"	name="paramTitulo">
 			</div>
 			<div class="col-md-6">
@@ -44,11 +44,11 @@
 		<div class="row" style="margin-top: 2%">
 			<div class="col-md-6">
 				<label class="control-label" for="id_anio">Año</label> 
-				<input class="form-control" type="number" id="id_anio"	name="paramAnio" maxlength="4">
+				<input class="form-control" type="number" id="id_anio" min="1000" max="9999"  oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '').slice(0, 4);"  maxlength="4">
 			</div>
 			<div class="col-md-6">
 				<label class="control-label" for="id_serie">Serie</label> 
-				<input class="form-control" type="text" id="id_serie"	name="paramSerie">
+				<input class="form-control" type="text" id="id_serie"	name="paramSerie" oninput="javascript: this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').slice(0, 5);" maxlength="5">
 			</div>
 		</div>
 		<div class="row" style="margin-top: 2%">
@@ -86,11 +86,11 @@
 						<tr>
 							<th style="width: 5%">ID</th>
 							<th style="width: 20%">Título</th>
-							<th style="width: 10%">Anio</th>
+							<th style="width: 10%">Año</th>
 							<th style="width: 15%">Serie</th>
-							<th style="width: 15%">Categoria</th>
+							<th style="width: 15%">Categoría</th>
 							<th style="width: 15%">Tipo</th>
-							<th style="width: 10%">Estado del libro</th>
+							<th style="width: 10%">Estado Préstamo</th>
 							<th style="width: 10%">Estado</th>
 						</tr>
 					</thead>
