@@ -15,5 +15,8 @@ public interface LibroService {
 	
 	public abstract List<Libro> buscaPorSerie (String serie);
 	public abstract List<Libro> buscaPorIdySerie (String serie, int idLibro);
+	
+	//consultas
+	public abstract List<Libro> listaConsultaLibro(int estado, int idCategoriaLibro, int idTipoLibro, int idEstadoPrestamo, String titulo, String serie, int anio);
 
 }
