@@ -44,7 +44,7 @@
 		<div class="row" style="margin-top: 2%">
 			<div class="col-md-6">
 				<label class="control-label" for="id_anio">Año</label> 
-				<input class="form-control" type="number" id="id_anio" min="1000" max="9999"  oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '').slice(0, 4);"  maxlength="4">
+				<input class="form-control" type="number" id="id_anio" min="1000" max="9999" name="paramAnio"  oninput="javascript: this.value = this.value.replace(/[^0-9]/g, '').slice(0, 4);"  maxlength="4">
 			</div>
 			<div class="col-md-6">
 				<label class="control-label" for="id_serie">Serie</label> 
