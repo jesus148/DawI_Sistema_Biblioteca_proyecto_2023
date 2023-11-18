@@ -98,12 +98,11 @@ public class Autor {
 	private Usuario usuarioActualiza;
 	
 	
+	
+	
+	
 	//ATRIBUTOS IGUAL EN EL JASPER REPÓRT EN LOS FIELDS / recorsar sin el get y la primera en minuscula
-	//estos metodos devuelven tipo de dato string , por lo tanto en los fields debe ser string tambien 
-	
-	
-	
-	
+	//estos metodos devuelven tipo de dato string , por lo tanto en los fields debe ser string tambien 	
 	public String getReporteEstado() {
 		return estado == 1? "Activo" : "Inactivo";
 		
