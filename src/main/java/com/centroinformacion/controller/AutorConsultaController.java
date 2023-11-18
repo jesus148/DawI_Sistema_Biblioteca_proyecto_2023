@@ -110,7 +110,7 @@ public class AutorConsultaController {
 			//PASO 2: Obtener el archivo que contiene el diseño del reporte
 			///ReporteEmpleados.jasper NOMBRE DEL JASPER REPORT EN > reportes el paquete
 			//ruta src> webapp> reportes 
-			String fileDirectory = request.getServletContext().getRealPath("/WEB-INF/reportes/ReporteAutores.jasper");
+			String fileDirectory = request.getServletContext().getRealPath("/WEB-INF/reportes/ReportesAutores.jasper");
 			log.info(">>> " + fileDirectory);//imprimiendo la ruta
 			FileInputStream stream   = new FileInputStream(new File(fileDirectory));//convierte en 
 			
@@ -118,11 +118,13 @@ public class AutorConsultaController {
 			
 			//PARA LA FOTO CON EL PARAMETRRO EN EL JASPEREPORT DEBE SER IGUAL EN EL PARAMETRO
 			//poner la ruta de la foto debe ser igual 
-			String  fileLogo = request.getServletContext().getRealPath("/WEB-INF/img/Logo.jpg");
+			String  fileLogo = request.getServletContext().getRealPath("/WEB-INF/img/logo.jpg");
+			
 			//PASO 3: Parámetros adicionales , hasmap de javautil
 			Map<String,Object> params = new HashMap<String,Object>();
 			//NOMBRE DEL PARAMETRO CREATE EN EL PARAMETER EN TU JASPER REPORT DEBE SER IGUAL 
 			params.put("LOGO", fileLogo);
+		
 		
 			
 			
@@ -135,7 +137,7 @@ public class AutorConsultaController {
 			
 			//PASO 5: Enviar el PDF generado
 			response.setContentType("application/x-pdf");
-		    response.addHeader("Content-disposition", "attachment; filename=ReporteAutores.pdf"); //pdf
+		    response.addHeader("Content-disposition", "attachment; filename=ReportesAutores.pdf"); //pdf
 			
 
 			OutputStream outStream = response.getOutputStream();
