@@ -1,13 +1,9 @@
 # Proyecto Java - Spring
 
-## Docente ✒️
+## Proyecto de un aplicacion web en java - Implementacion de un sistema de Bilbioteca 2023
 
-* **Jorge Jacinto ** - [jorgejacinto9701](https://github.com/jorgejacinto9701)
+## se usa servicios rest 
 
-## Grupo  ✒️
-* 201912049 Jaure Lambruschini, Paula Esther
-* 202117248 Garro Del Rio, Sebastián Miguel
-* 202120756 Huamanraime Maquin, Esteffany Lucia
-* 202110301 Ramos Ayasta, Juan Antonio
-* 202014378 Huaman Angeles, Jesus Argel
-* 202112276 Villanueva Fabián, Willian Jesús
+## D:\DAW_1\dawi_20232_jueves_T5FN_grupo_02 --- route on desktop pc
+
+## Base de datos > D:\CIBERTEC_2023_2\DESAROLLO APLICACIONES WEB I\PROYECTO\BD PORYECTO ULTIMA
